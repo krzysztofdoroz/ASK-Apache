@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
@@ -7,26 +8,59 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<!--<link rel="stylesheet" type="text/css" href="style.css" />-->
 		<style type="text/css">
-			span {background-color: gray; }
+			span {background-color: blue; }
+			
+			body{
+			 background-color: #eee }
+			
+			
 		</style>
 	
 	</head>
 	<body>
 		<h1>Apache VHost config</h1>
-		<form method="post">
+		
+		
+		
+		
+		
+		<form method="post" > 
+			{% for dataNode in virtualHost.data %}
+			<fieldset>
+				<legend>{{ dataNode.key }} <span>{{ dataNode.value }}</span>
+					<!-- <input type="button" value="Edytuj" action="/editNode/{{forloop.counter}}/" /> -->
+					<!-- <a href="/editNode/{{forloop.counter}}/" /> -->
+					<INPUT TYPE="button" name="complete1" value="Edit" onClick="parent.location='/editData/{{forloop.counter}}/'">
+					
+				</legend>
+				{% for data in dataNode.comments %}
+				{{ data }}
+				<br />
+				{% endfor %}
+			</fieldset>
+			
+			{% endfor %}
+			<!-- <input type="submit" value="Submit" /> -->
+ 		</form>
+		
+		<form method="post" > 
 			{% for node in virtualHost.nodes %}
 			<fieldset>
 				<legend>{{ node.name }} <span>{{ node.rootData }}</span>
-					<input type="submit" value="Edytuj" />
-					<input type="submit" value="Usuń" />
+					<!-- <input type="button" value="Edytuj" action="/editNode/{{forloop.counter}}/" /> -->
+					<!-- <a href="/editNode/{{forloop.counter}}/" /> -->
+					<INPUT TYPE="button" name="complete1" value="Edit" onClick="parent.location='/editNode/{{forloop.counter}}/'">
+					
 				</legend>
 				{% for data in node.data %}
 				{{ data.key }}: <span>{{ data.value }}</span>
 				<br />
 				{% endfor %}
 			</fieldset>
+			
 			{% endfor %}
-			<input type="submit" value="Submit" />
-		</form>
+			<!-- <input type="submit" value="Submit" /> -->
+ 		</form>
+		
 	</body>
 </html>
