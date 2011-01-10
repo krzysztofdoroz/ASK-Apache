@@ -1,0 +1,16 @@
+
+
+
+<form method="post" action="/init/">
+	<fieldset>
+		<legend> PLiki konfiguracyjne:
+			<input type="submit" value="Zapisz" />
+			<INPUT TYPE="button" name="complete1" value="Back" onClick="parent.location='/ask/'">
+		</legend>
+		
+		Virtual Host Config File: <input name="vh_file" type="text" maxlength="128" value='{{ virtual_Host_file }}' />
+		<br />
+		Http Config File: <input name="http_conf" type="text" maxlength="128" value='{{ http_conf_file }}' />
+	</fieldset>
+	
+</form>

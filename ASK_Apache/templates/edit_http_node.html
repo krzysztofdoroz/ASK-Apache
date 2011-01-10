@@ -1,0 +1,17 @@
+
+
+
+
+<form method="post" action="/edit_http_node/{{nodeId}}/">
+	<fieldset>
+		<legend>{{ node.name }} <input value={{ node.rootData }} />
+			<input type="submit" value="Zapisz" />
+			<INPUT TYPE="button" name="complete1" value="Back" onClick="parent.location='/conf/'">
+		</legend>
+		{% for data in node.data %}
+		{{ data.key }}: <input name={{data.key}} type="text" maxlength="128" value='{{ data.value }}' />
+		<br />
+		{% endfor %}
+	</fieldset>
+	
+</form>
