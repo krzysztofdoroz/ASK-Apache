@@ -1,0 +1,24 @@
+
+<form method="post" action="/editData/{{nodeId}}/">
+	<fieldset>
+		<legend>{{ dataNode.key }} <input value={{ dataNode.value }} type="text" name="{{ dataNode.key }}" />
+			<input type="submit" value="Zapisz" />
+			<INPUT TYPE="button" name="complete1" value="Anuluj" onClick="parent.location='/test/'">
+		</legend>
+		{% for data in dataNode.comments %}
+		comments: <input name={{data}} type="text" maxlength="128" value='{{ data }}' />
+		<br />
+		{% endfor %}
+	</fieldset>
+	
+</form>
+
+
+{% if dataNode.key == "AllowOverride" %}
+
+Possible values: <br/>
+
+All <br/>
+None
+
+{% endif %}
